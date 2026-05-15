@@ -24,6 +24,8 @@ leadshield/
 │       └── LeadDetail.tsx      # Full lead analysis — score ring, signal bars, AI reasoning
 │
 ├── docs/
+│   ├── ARCHITECTURE.md         # System architecture (this file)
+│   ├── CHANGELOG.md            # Version history and technical decisions
 │   └── demo-dashboard.png      # Dashboard screenshot
 │
 ├── index.html                  # HTML shell (loads React app)
