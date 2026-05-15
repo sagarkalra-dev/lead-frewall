@@ -3,6 +3,30 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --s-900: #f8fafc;
+    --s-800: #ffffff;
+    --s-700: #f1f5f9;
+    --s-600: #e2e8f0;
+    --s-500: #cbd5e1;
+    --t-primary: #0f172a;
+    --t-secondary: #334155;
+    --t-muted: #64748b;
+    --t-faint: #94a3b8;
+  }
+
+  .dark {
+    --s-900: #07070d;
+    --s-800: #0d0d16;
+    --s-700: #12121f;
+    --s-600: #1a1a2e;
+    --s-500: #242440;
+    --t-primary: #e2e8f0;
+    --t-secondary: #94a3b8;
+    --t-muted: #64748b;
+    --t-faint: #475569;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -10,11 +34,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: var(--s-600);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #334155;
+    background: var(--s-500);
   }
 }
 

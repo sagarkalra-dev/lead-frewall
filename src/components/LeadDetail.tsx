@@ -16,7 +16,7 @@ function ScoreRing({ score, verdict }: { score: number; verdict: string }) {
   return (
     <div className="relative flex h-32 w-32 items-center justify-center">
       <svg className="absolute -rotate-90" width="128" height="128">
-        <circle cx="64" cy="64" r={radius} fill="none" stroke="#1e293b" strokeWidth="8" />
+        <circle cx="64" cy="64" r={radius} fill="none" stroke="var(--s-600)" strokeWidth="8" />
         <circle
           cx="64" cy="64" r={radius} fill="none" stroke={color} strokeWidth="8"
           strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={offset}
@@ -24,8 +24,8 @@ function ScoreRing({ score, verdict }: { score: number; verdict: string }) {
         />
       </svg>
       <div className="text-center">
-        <p className="text-3xl font-extrabold text-white">{score}</p>
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">/ 100</p>
+        <p className="text-3xl font-extrabold text-th-primary">{score}</p>
+        <p className="text-[10px] font-semibold uppercase tracking-wider text-th-muted">/ 100</p>
       </div>
     </div>
   );
@@ -34,12 +34,12 @@ function ScoreRing({ score, verdict }: { score: number; verdict: string }) {
 function SignalBar({ signal }: { signal: Signal }) {
   const pct = (signal.score / signal.maxScore) * 100;
   const barColor = signal.severity === "good" ? "bg-emerald-500" : signal.severity === "warn" ? "bg-amber-500" : "bg-red-500";
-  const textColor = signal.severity === "good" ? "text-emerald-400" : signal.severity === "warn" ? "text-amber-400" : "text-red-400";
+  const textColor = signal.severity === "good" ? "text-emerald-500" : signal.severity === "warn" ? "text-amber-500" : "text-red-500";
 
   return (
     <div className="mb-3">
       <div className="flex items-center justify-between text-xs">
-        <span className="font-medium text-slate-300">{signal.name}</span>
+        <span className="font-medium text-th-secondary">{signal.name}</span>
         <span className={`font-mono font-bold ${textColor}`}>{signal.score}/{signal.maxScore}</span>
       </div>
       <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-surface-600">
@@ -48,7 +48,7 @@ function SignalBar({ signal }: { signal: Signal }) {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <p className="mt-0.5 text-[11px] text-slate-500">{signal.detail}</p>
+      <p className="mt-0.5 text-[11px] text-th-muted">{signal.detail}</p>
     </div>
   );
 }
@@ -57,13 +57,13 @@ export function LeadDetail({ lead }: { lead: ScoredLead | null }) {
   if (!lead) {
     return (
       <div className="flex h-[580px] items-center justify-center rounded-xl border border-surface-600 bg-surface-800">
-        <p className="text-sm text-slate-600">Select a lead to view details</p>
+        <p className="text-sm text-th-faint">Select a lead to view details</p>
       </div>
     );
   }
 
   const { lead: l, score, verdict, signals, aiReasoning, estimatedValue } = lead;
-  const verdictColor = verdict === "PASS" ? "text-emerald-400" : verdict === "REVIEW" ? "text-amber-400" : "text-red-400";
+  const verdictColor = verdict === "PASS" ? "text-emerald-500" : verdict === "REVIEW" ? "text-amber-500" : "text-red-500";
   const verdictBg = verdict === "PASS" ? "bg-emerald-500/10 border-emerald-500/30" : verdict === "REVIEW" ? "bg-amber-500/10 border-amber-500/30" : "bg-red-500/10 border-red-500/30";
 
   return (
@@ -73,14 +73,14 @@ export function LeadDetail({ lead }: { lead: ScoredLead | null }) {
         <div className="flex items-center gap-4">
           <ScoreRing score={score} verdict={verdict} />
           <div>
-            <h2 className="text-lg font-bold text-white">{l.contact.firstName} {l.contact.lastName}</h2>
-            <p className="text-sm text-slate-400">{VERTICAL_LABELS[l.vertical]}</p>
+            <h2 className="text-lg font-bold text-th-primary">{l.contact.firstName} {l.contact.lastName}</h2>
+            <p className="text-sm text-th-muted">{VERTICAL_LABELS[l.vertical]}</p>
             <div className={`mt-2 inline-block rounded-lg border px-3 py-1 text-sm font-bold ${verdictBg} ${verdictColor}`}>
               {verdict}
             </div>
             {estimatedValue > 0 && (
-              <p className="mt-1 text-xs text-slate-500">
-                Est. savings: <span className="font-semibold text-emerald-400">${estimatedValue}</span> per blocked lead
+              <p className="mt-1 text-xs text-th-muted">
+                Est. savings: <span className="font-semibold text-emerald-500">${estimatedValue}</span> per blocked lead
               </p>
             )}
           </div>
@@ -90,14 +90,14 @@ export function LeadDetail({ lead }: { lead: ScoredLead | null }) {
       <div className="mt-5 grid grid-cols-1 gap-5 xl:grid-cols-2">
         {/* Left: Signals */}
         <div>
-          <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Signal Breakdown</h3>
+          <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-th-muted">Signal Breakdown</h3>
           {signals.map(s => <SignalBar key={s.name} signal={s} />)}
         </div>
 
         {/* Right: Details + AI */}
         <div>
           {/* Contact Info */}
-          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Contact Data</h3>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-th-muted">Contact Data</h3>
           <div className="mb-4 grid grid-cols-2 gap-x-4 gap-y-1.5 rounded-lg bg-surface-700/50 p-3 text-xs">
             <Detail label="Email" value={l.contact.email} />
             <Detail label="Phone" value={l.contact.phone} />
@@ -118,7 +118,7 @@ export function LeadDetail({ lead }: { lead: ScoredLead | null }) {
                 </svg>
                 AI Analysis
               </h3>
-              <div className="rounded-lg border border-accent/20 bg-accent/5 p-3 text-xs leading-relaxed text-slate-300">
+              <div className="rounded-lg border border-accent/20 bg-accent/5 p-3 text-xs leading-relaxed text-th-secondary">
                 {aiReasoning}
               </div>
             </div>
@@ -126,9 +126,9 @@ export function LeadDetail({ lead }: { lead: ScoredLead | null }) {
 
           {/* Technical */}
           <div className="mt-4">
-            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Technical Fingerprint</h3>
-            <div className="rounded-lg bg-surface-700/50 p-3 font-mono text-[11px] text-slate-500">
-              <p>IP: {l.technical.ip} {l.technical.isDataCenterIp && <span className="text-red-400">[DATA CENTER]</span>}</p>
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-th-muted">Technical Fingerprint</h3>
+            <div className="rounded-lg bg-surface-700/50 p-3 font-mono text-[11px] text-th-muted">
+              <p>IP: {l.technical.ip} {l.technical.isDataCenterIp && <span className="text-red-500">[DATA CENTER]</span>}</p>
               <p className="mt-1 truncate">UA: {l.technical.userAgent}</p>
             </div>
           </div>
@@ -141,8 +141,8 @@ export function LeadDetail({ lead }: { lead: ScoredLead | null }) {
 function Detail({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <span className="text-slate-500">{label}: </span>
-      <span className="font-medium text-slate-300">{value}</span>
+      <span className="text-th-muted">{label}: </span>
+      <span className="font-medium text-th-secondary">{value}</span>
     </div>
   );
 }

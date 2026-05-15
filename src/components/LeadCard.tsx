@@ -8,9 +8,9 @@ const VERTICAL_LABELS: Record<string, string> = {
 };
 
 const VERDICT_STYLES: Record<string, string> = {
-  PASS: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
-  REVIEW: "bg-amber-500/15 text-amber-400 border-amber-500/30",
-  REJECT: "bg-red-500/15 text-red-400 border-red-500/30",
+  PASS: "bg-emerald-500/15 text-emerald-600 border-emerald-500/30",
+  REVIEW: "bg-amber-500/15 text-amber-600 border-amber-500/30",
+  REJECT: "bg-red-500/15 text-red-600 border-red-500/30",
 };
 
 function timeAgo(ts: number): string {
@@ -36,15 +36,14 @@ export function LeadCard({ scored, isSelected, onClick }: { scored: ScoredLead; 
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          {/* Score badge */}
           <div className={`flex h-9 w-9 items-center justify-center rounded-lg border text-sm font-bold ${VERDICT_STYLES[verdict]}`}>
             {score}
           </div>
           <div>
-            <p className="text-sm font-medium text-slate-200">
+            <p className="text-sm font-medium text-th-primary">
               {lead.contact.firstName} {lead.contact.lastName.charAt(0)}.
             </p>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-th-muted">
               {VERTICAL_LABELS[lead.vertical]} &middot; {lead.source.platform}
             </p>
           </div>
@@ -53,7 +52,7 @@ export function LeadCard({ scored, isSelected, onClick }: { scored: ScoredLead; 
           <span className={`rounded border px-1.5 py-0.5 text-[10px] font-bold uppercase ${VERDICT_STYLES[verdict]}`}>
             {verdict}
           </span>
-          <span className="text-[10px] text-slate-600">{timeAgo(scored.scoredAt)}</span>
+          <span className="text-[10px] text-th-faint">{timeAgo(scored.scoredAt)}</span>
         </div>
       </div>
     </button>

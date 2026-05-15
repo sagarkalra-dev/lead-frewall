@@ -10,6 +10,7 @@ export default function App() {
   const [stats, setStats] = useState<DashboardStats>({ totalLeads: 0, passed: 0, reviewed: 0, rejected: 0, avgScore: 0, estimatedSavings: 0, leadsPerMinute: 0 });
   const [alerts, setAlerts] = useState<PatternAlert[]>([]);
   const [selected, setSelected] = useState<ScoredLead | null>(null);
+  const [dark, setDark] = useState(false);
   const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
@@ -35,10 +36,14 @@ export default function App() {
     return () => { socket.disconnect(); };
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+  }, [dark]);
+
   const handleSelect = useCallback((lead: ScoredLead) => setSelected(lead), []);
 
   return (
-    <div className="min-h-screen bg-surface-900 p-4 md:p-6">
+    <div className="min-h-screen bg-surface-900 p-4 md:p-6 transition-colors duration-300">
       {/* Header */}
       <header className="mb-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -48,16 +53,32 @@ export default function App() {
             </svg>
           </div>
           <div>
-            <h1 className="text-xl font-bold text-white">LeadShield <span className="text-accent">AI</span></h1>
-            <p className="text-xs text-slate-500">Real-time Lead Quality Firewall</p>
+            <h1 className="text-xl font-bold text-th-primary">LeadShield <span className="text-accent">AI</span></h1>
+            <p className="text-xs text-th-muted">Real-time Lead Quality Firewall</p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-          </span>
-          <span className="text-xs text-slate-500">Live</span>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setDark(d => !d)}
+            className="flex h-8 w-8 items-center justify-center rounded-lg border border-surface-600 bg-surface-800 text-th-muted transition-colors hover:text-th-primary"
+          >
+            {dark ? (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+                <path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zm0-8a3 3 0 100 6 3 3 0 000-6zm5.657-1.596a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0zm-9.193 9.192a.75.75 0 010 1.061l-1.06 1.06a.75.75 0 01-1.061-1.06l1.06-1.06a.75.75 0 011.061 0zM18 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0118 10zM5 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 015 10zm12.657 5.657a.75.75 0 01-1.061 0l-1.06-1.06a.75.75 0 011.06-1.061l1.061 1.06a.75.75 0 010 1.061zm-9.193-9.193a.75.75 0 01-1.06 0l-1.061-1.06a.75.75 0 011.06-1.061l1.06 1.06a.75.75 0 010 1.06z" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+                <path fillRule="evenodd" d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 116.647 1.921a.75.75 0 01.808.083z" clipRule="evenodd" />
+              </svg>
+            )}
+          </button>
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+            </span>
+            <span className="text-xs text-th-muted">Live</span>
+          </div>
         </div>
       </header>
 
@@ -77,7 +98,7 @@ export default function App() {
       {/* Pattern Alerts */}
       {alerts.length > 0 && (
         <div className="mt-5 rounded-xl border border-surface-600 bg-surface-800 p-4">
-          <h3 className="mb-3 text-sm font-semibold text-slate-400">Pattern Alerts</h3>
+          <h3 className="mb-3 text-sm font-semibold text-th-muted">Pattern Alerts</h3>
           <div className="flex flex-wrap gap-2">
             {alerts.slice(-6).map(a => (
               <div
@@ -98,7 +119,7 @@ export default function App() {
       )}
 
       {/* Footer */}
-      <footer className="mt-6 text-center text-xs text-slate-600">
+      <footer className="mt-6 text-center text-xs text-th-faint">
         Built for Pear Media LLC &middot; LeadShield AI v1.0
       </footer>
     </div>

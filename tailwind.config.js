@@ -5,11 +5,17 @@ export default {
     extend: {
       colors: {
         surface: {
-          900: "#07070d",
-          800: "#0d0d16",
-          700: "#12121f",
-          600: "#1a1a2e",
-          500: "#242440",
+          900: "var(--s-900)",
+          800: "var(--s-800)",
+          700: "var(--s-700)",
+          600: "var(--s-600)",
+          500: "var(--s-500)",
+        },
+        th: {
+          primary: "var(--t-primary)",
+          secondary: "var(--t-secondary)",
+          muted: "var(--t-muted)",
+          faint: "var(--t-faint)",
         },
         accent: {
           DEFAULT: "#6366f1",
