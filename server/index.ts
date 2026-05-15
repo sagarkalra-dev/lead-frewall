@@ -112,7 +112,7 @@ function scheduleNext() {
   }, delay);
 }
 
-app.get("*", (_req, res) => {
+app.get("/{*path}", (_req, res) => {
   res.sendFile(join(__dirname, "../dist/index.html"));
 });
 
