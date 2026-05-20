@@ -4,7 +4,7 @@ All notable changes to LeadShield AI are documented here.
 
 ## [1.0.0] — 2026-05-16
 
-Initial release. Built as a working proof-of-concept for Pear Media LLC.
+Initial release. Built as a working proof-of-concept for a US performance-marketing agency.
 
 ### Added
 

@@ -158,7 +158,7 @@ Connect this to LeadByte's outbound webhook. Route the response verdict back to 
 
 | Component | Technology | Why |
 |---|---|---|
-| Runtime | Node.js 20+ (ESM) | Matches Pear Media's stack |
+| Runtime | Node.js 20+ (ESM) | Modern async, native ESM support |
 | Server | Express 5 | Latest stable, native async support |
 | Real-time | Socket.io 4 | Reliable WebSocket with auto-fallback |
 | AI | Google Gemini Flash | Fast, cheap, high-quality reasoning |

@@ -120,7 +120,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="mt-6 text-center text-xs text-th-faint">
-        Built for Pear Media LLC &middot; LeadShield AI v1.0 &middot;{" "}
+        LeadShield AI v1.0 &middot;{" "}
         <a href="https://github.com/sagarkalra-dev/lead-frewall" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent-light transition-colors">
           Read the full proposal
         </a>

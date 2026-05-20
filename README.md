@@ -2,7 +2,7 @@
 
 **Real-time AI-powered lead quality firewall for performance marketing agencies.**
 
-Built specifically for [Pear Media LLC](https://www.pearmediallc.com/) to eliminate junk leads before they hit the sales pipeline.
+Built as a take-home for a US performance-marketing agency to eliminate junk leads before they hit the sales pipeline.
 
 [Live Demo](https://lead-firewall.onrender.com)
 
@@ -12,7 +12,7 @@ Built specifically for [Pear Media LLC](https://www.pearmediallc.com/) to elimin
 
 ## The Problem
 
-Pear Media runs **$50M+ in annual ad spend** across Meta, Google, TikTok, and display networks, generating leads for auto insurance, Medicare, home services, and debt relief verticals.
+The agency runs **$50M+ in annual ad spend** across Meta, Google, TikTok, and display networks, generating leads for auto insurance, Medicare, home services, and debt relief verticals.
 
 The industry-wide problem: **20-30% of performance marketing leads are junk.**
 
@@ -39,7 +39,7 @@ The industry-wide problem: **20-30% of performance marketing leads are junk.**
     CPA rises, close rates drop, sales team burns out
 ```
 
-**At Pear Media's scale:**
+**At this scale:**
 
 | Metric | Value |
 |---|---|
@@ -56,7 +56,7 @@ Beyond direct cost, junk leads poison the feedback loop — Meta and Google opti
 
 LeadShield is a **real-time scoring firewall** that sits between lead capture and CRM delivery. Every lead is analyzed across 6 signal dimensions and scored 0-100 before it touches the sales pipeline.
 
-### Where LeadShield fits in Pear Media's pipeline
+### Where LeadShield fits in the pipeline
 
 **Current flow (no protection):**
 
@@ -160,7 +160,7 @@ LeadShield doesn't just score individual leads — it detects **coordinated frau
 
 ## ROI Projection
 
-Conservative estimate based on Pear Media's publicly known vertical CPLs:
+Conservative estimate based on industry-standard vertical CPLs:
 
 | Vertical | CPL | Monthly leads (est.) | Junk rate | Monthly savings |
 |---|---|---|---|---|
@@ -243,8 +243,6 @@ The dashboard shows live scoring, quality distribution, and pattern alerts. Over
 | AI Scoring | Google Gemini Flash |
 | Hosting | Render (scalable to any cloud) |
 
-Aligns with Pear Media's existing internal stack (Node.js, React, Next.js).
-
 ---
 
 ## What's Next
@@ -263,4 +261,4 @@ Aligns with Pear Media's existing internal stack (Node.js, React, Next.js).
 
 ---
 
-*Built by [Sagar Kalra](mailto:officialsagarkalra@gmail.com) for Pear Media LLC.*
+*Built by [Sagar Kalra](mailto:officialsagarkalra@gmail.com).*
